@@ -1,10 +1,13 @@
 import React from 'react';
+import { Header, Wrapper } from './AppStyle';
+import { Input }  from "./components/Input"
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <div className="App">
-     Hello World!
-    </div>
+    <Wrapper>
+      <Header>TASKIFY</Header>
+      <Input/>
+    </Wrapper>
   );
 }
 
