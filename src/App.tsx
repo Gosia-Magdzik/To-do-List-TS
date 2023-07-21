@@ -8,7 +8,7 @@ const App: React.FC = () => {
   return (
     <Wrapper>
       <Header>TASKIFY</Header>
-      <Input/>
+      <Input todo={todo} setTodo={setTodo} />
     </Wrapper>
   );
 }
