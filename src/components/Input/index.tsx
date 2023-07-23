@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Form, InputField, Button } from "./styled"
 
 interface Props {
@@ -7,10 +7,17 @@ interface Props {
     handleAdd: (event: React.FormEvent) => void; //f. does not return anything
 }
 
-export const Input = ({todo, setTodo, handleAdd} : Props) => {
+export const Input: React.FC<Props> = ({todo, setTodo, handleAdd} : Props) => {
+    
+    const inputRef = useRef<HTMLInputElement>(null);
+
     return (
-        <Form onSubmit={handleAdd}>
+        <Form onSubmit={(Event) => {
+            handleAdd(Event)
+            inputRef.current?.blur()
+            }}>
             <InputField
+                ref={inputRef}
                 type='input'
                 value={todo}
                 onChange={
