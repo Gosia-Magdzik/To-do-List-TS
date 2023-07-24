@@ -49,3 +49,7 @@ export const Img = styled.span`
     }
 `;
 
+
+export const Input = styled.input`
+    
+`;
