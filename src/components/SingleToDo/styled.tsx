@@ -3,12 +3,14 @@ import styled from "styled-components";
 export const Wrapper = styled.form`
     display: flex;
     padding: 20px;
-    width: 29.5%;
+    width: 33%;
     margin-top: 15px;
     background-color: #d6d65ed9;
     border-radius: 25px;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
 
     @media (max-width: 767px) {
         width: 95%;
@@ -21,10 +23,6 @@ export const SingleText = styled.span`
     border: none;
     font-size: 20px;
     flex: 1; //gwarantuje elastyczność elementu
-
-    &:focus {
-        outline: none;
-    }
 `;
 
 export const SingleTextDone = styled.s`
@@ -51,5 +49,21 @@ export const Img = styled.span`
 
 
 export const Input = styled.input`
-    
+    padding: 5px;
+    border: none;
+    font-size: 20px;
+    flex: 1;
+    border-radius: 10px;
+    margin: 10px;
+
+    &:focus {
+        outline: none;
+    }
+
+    @media (max-width: 767px) {
+        padding: 3px;
+        font-size: 15px;
+        margin: 8px;
+    }
+
 `;
