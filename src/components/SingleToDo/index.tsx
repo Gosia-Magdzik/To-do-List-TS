@@ -1,7 +1,8 @@
 import React from "react";
 import { Todo } from "../../model"
-import { Wrapper, SingleText, Img } from "./styled";
+import { Wrapper, SingleText, Img, SingleTextDone } from "./styled";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { MdOutlineDone } from "react-icons/md"
 
 type Props = {
     todo: Todo,
@@ -10,17 +11,42 @@ type Props = {
 }
 
 export const SingleToDo = ({todo, todos, setTodos }:Props) => {
+    
+    const handleDone = (id: number) => {
+        setTodos(
+            todos.map((todo) => 
+        todo.id === id ? {...todo, isDone: !todo.isDone } : todo
+        ));
+    };
+
+    const handleDelete = (id: number) => {
+        setTodos(
+            todos.filter((todo) => todo.id !== id)
+        );
+    };
+    
     return(
         <Wrapper>
-            <SingleText>
-                {todo.todo}
-            </SingleText>
-            <span>
+                {
+                    todo.isDone ? (
+                    <SingleTextDone>
+                        {todo.todo}
+                    </SingleTextDone>
+                    ) : (
+                    <SingleText>
+                        {todo.todo}
+                    </SingleText>
+                    )
+                }
+            <Img>
                 <AiFillEdit/>
-            </span>
-            <span>
+            </Img>
+            <Img onClick={() => handleDelete(todo.id)}>
                 <AiFillDelete/>
-            </span>
+            </Img>
+            <Img onClick={() => handleDone(todo.id)}>
+                <MdOutlineDone/>
+            </Img>
         </Wrapper>
     );
 };
