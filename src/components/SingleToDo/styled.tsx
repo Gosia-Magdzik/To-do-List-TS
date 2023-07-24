@@ -23,6 +23,7 @@ export const SingleText = styled.span`
     border: none;
     font-size: 20px;
     flex: 1; //gwarantuje elastyczność elementu
+    font-family: 'Neucha', cursive;
 `;
 
 export const SingleTextDone = styled.s`
@@ -30,6 +31,7 @@ export const SingleTextDone = styled.s`
     border: none;
     font-size: 20px;
     flex: 1; //gwarantuje elastyczność elementu
+    font-family: 'Neucha', cursive;
 
     &:focus {
         outline: none;
