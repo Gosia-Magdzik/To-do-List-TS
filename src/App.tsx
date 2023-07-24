@@ -24,12 +24,7 @@ const handleAdd = (event: React.FormEvent) => {
     <Wrapper>
       <Header>TASKIFY</Header>
       <Input todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
-    /*      <TodoList/> */    
-    {
-      todos.map((task) => (
-        <li>{task.todo}</li>
-      ))
-    }
+      <TodoList todos={todos} setTodos={setTodos}/>    
     </Wrapper>
   );
 }
