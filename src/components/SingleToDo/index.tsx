@@ -1,7 +1,7 @@
-import bin from "./Icons/delete.svg";
-import mark from "./Icons/mark.svg";
-import pen from "./Icons/pen.svg";
+import React from "react";
 import { Todo } from "../../model"
+import { Wrapper, SingleText, Img } from "./styled";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 
 type Props = {
     todo: Todo,
@@ -11,8 +11,16 @@ type Props = {
 
 export const SingleToDo = ({todo, todos, setTodos }:Props) => {
     return(
-        <div>
-
-        </div>
+        <Wrapper>
+            <SingleText>
+                {todo.todo}
+            </SingleText>
+            <span>
+                <AiFillEdit/>
+            </span>
+            <span>
+                <AiFillDelete/>
+            </span>
+        </Wrapper>
     );
 };
