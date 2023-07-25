@@ -9,7 +9,7 @@ import { DragDropContext, DropResult } from "react-beautiful-dnd"
 const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
   const [todos, setTodos] = useState<Todo[]>([]); //array of todos
-  const [CompletedTodos, setCompletedTodos] = useState<Array<Todo>[]>([]);
+  const [completedTodos, setcompletedTodos] = useState<Array<Todo>>([]);
 
 const handleAdd = (event: React.FormEvent) => {
   event.preventDefault();
@@ -39,7 +39,7 @@ const onDragEnd = (result:DropResult) => {
 
   let add;
   let active = todos;
-  let complete = CompletedTodos;
+  let complete = completedTodos;
 
   if (source.droppableId === "TodosList") {
     add= active[source.index]; //and then... remove
@@ -55,7 +55,7 @@ const onDragEnd = (result:DropResult) => {
     complete.splice(destination.index, 0, add); 
   }
 
-  setCompletedTodos(complete);
+  setcompletedTodos(complete);
   setTodos(active);
 };
 
@@ -67,8 +67,8 @@ const onDragEnd = (result:DropResult) => {
         <TodoList 
           todos={todos} 
           setTodos={setTodos}
-          CompletedTodos={CompletedTodos}
-          setCompletedTodos={setCompletedTodos}
+          completedTodos={completedTodos}
+          setcompletedTodos={setcompletedTodos}
         />    
       </Wrapper>
     </DragDropContext>
