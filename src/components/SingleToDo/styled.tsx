@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.form`
     display: flex;
     padding: 20px;
-    width: 33%;
+    width: 90%;
     margin-top: 15px;
     background-color: #d6d65ed9;
     border-radius: 25px;
@@ -11,6 +11,12 @@ export const Wrapper = styled.form`
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: row;
+    transition: 0.2s;
+
+    &:hover {
+        box-shadow: 0 0 5px black;
+        transform: scale(1.03);
+    }
 
     @media (max-width: 767px) {
         width: 95%;
@@ -24,6 +30,11 @@ export const SingleText = styled.span`
     font-size: 20px;
     flex: 1; //gwarantuje elastyczność elementu
     font-family: 'Neucha', cursive;
+
+    @media (max-width: 767px) {
+        font-size: 15px;
+        padding: 2px;
+    }
 `;
 
 export const SingleTextDone = styled.s`
@@ -35,6 +46,11 @@ export const SingleTextDone = styled.s`
 
     &:focus {
         outline: none;
+    }
+
+    @media (max-width: 767px) {
+        font-size: 15px;
+        padding: 2px;
     }
 `;
 

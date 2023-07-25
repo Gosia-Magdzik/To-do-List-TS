@@ -1,4 +1,4 @@
-import { Wrapper, List } from "./styled";
+import { Wrapper, TodosWrapper, RemoveWrapper, Title } from "./styled";
 import { Todo } from "../../model";
 import { SingleToDo } from "../SingleToDo";
 
@@ -10,14 +10,28 @@ interface Props{
 export const TodoList: React.FC<Props> = ({ todos, setTodos }: Props) => {
     return(
         <Wrapper>
-            {todos.map(todo => (
-                <SingleToDo 
-                    todo={todo} 
-                    key={todo.id} 
-                    todos={todos}
-                    setTodos={setTodos}
-                />
-            ))}
+            <TodosWrapper>
+                <Title>Active Tasks</Title>
+                {todos.map(todo => (
+                    <SingleToDo 
+                        todo={todo} 
+                        key={todo.id} 
+                        todos={todos}
+                        setTodos={setTodos}
+                    />
+                ))}
+            </TodosWrapper>
+            <RemoveWrapper>
+            <Title>Completed Tasks</Title>
+                {todos.map(todo => (
+                    <SingleToDo 
+                        todo={todo} 
+                        key={todo.id} 
+                        todos={todos}
+                        setTodos={setTodos}
+                    />
+                ))}
+            </RemoveWrapper>
         </Wrapper>
     );
 };
