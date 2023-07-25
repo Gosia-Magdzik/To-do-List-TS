@@ -10,10 +10,10 @@ interface Props{
     setcompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-export const TodoList: React.FC<Props> = ({ todos, setTodos, completedTodos, setcompletedTodos }: Props) => {
+export const TodoList: React.FC<Props> = ({ todos, setTodos, completedTodos, setcompletedTodos }) => {
     return(
         <Wrapper>
-            <Droppable droppableId="TodosRemove">
+            <Droppable droppableId="TodosList">
                 {
                     (provided) => (
                         <TodosWrapper 
@@ -37,7 +37,7 @@ export const TodoList: React.FC<Props> = ({ todos, setTodos, completedTodos, set
                     )
                 }
             </Droppable>
-            <Droppable droppableId="TodosList">
+            <Droppable droppableId="TodosRemove">
                 {
                     (provided) => (
                         <RemoveWrapper 

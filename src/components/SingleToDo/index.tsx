@@ -48,8 +48,7 @@ export const SingleToDo = ({index, todo, todos, setTodos }:Props) => {
     }, [edit]);
 
     return(
-        <Draggable draggableId={todo.id.toString()} index={index}>
-            
+        <Draggable draggableId={todo.id.toString()} index={index}>    
             {
                 (provided) => (
                     <Wrapper 
