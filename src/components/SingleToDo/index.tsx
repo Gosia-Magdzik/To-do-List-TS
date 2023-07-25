@@ -3,14 +3,16 @@ import { Todo } from "../../model"
 import { Wrapper, SingleText, Img, SingleTextDone, Input } from "./styled";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { MdOutlineDone } from "react-icons/md"
+import { Draggable } from "react-beautiful-dnd";
 
 type Props = {
+    index: number;
     todo: Todo,
     todos: Todo[],
     setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-export const SingleToDo = ({todo, todos, setTodos }:Props) => {
+export const SingleToDo = ({index, todo, todos, setTodos }:Props) => {
     
     const [edit, setEdit] = useState<boolean>(false)
     const [editTodo, setEditTodo] = useState<string>(todo.todo)
@@ -46,39 +48,50 @@ export const SingleToDo = ({todo, todos, setTodos }:Props) => {
     }, [edit]);
 
     return(
-        <Wrapper onSubmit={(Event) => handleEdit(Event, todo.id)} >
-                {   
-                    edit ? (
-                        <Input 
-                            ref={inputRef}
-                            value={editTodo}
-                            onChange={(Event) => setEditTodo(Event.target.value)}
-                        />
-                    ) : (
-                    todo.isDone ? (
-                        <SingleTextDone>
-                            {todo.todo}
-                        </SingleTextDone>
+        <Draggable draggableId={todo.id.toString()} index={index}>
+            
+            {
+                (provided) => (
+                    <Wrapper 
+                        onSubmit={(Event) => handleEdit(Event, todo.id)} 
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                    >
+                    {   
+                        edit ? (
+                            <Input 
+                                ref={inputRef}
+                                value={editTodo}
+                                onChange={(Event) => setEditTodo(Event.target.value)}
+                            />
                         ) : (
-                        <SingleText>
-                            {todo.todo}
-                        </SingleText>
-                        ))
-                }
-
-            <Img onClick={() => {
-                if (!edit && !todo.isDone) {
-                    setEdit(!edit)
-                };
-            }}>
-                <AiFillEdit/>
-            </Img>
-            <Img onClick={() => handleDelete(todo.id)}>
-                <AiFillDelete/>
-            </Img>
-            <Img onClick={() => handleDone(todo.id)}>
-                <MdOutlineDone/>
-            </Img>
-        </Wrapper>
+                        todo.isDone ? (
+                            <SingleTextDone>
+                                {todo.todo}
+                            </SingleTextDone>
+                            ) : (
+                            <SingleText>
+                                {todo.todo}
+                            </SingleText>
+                            ))
+                    }
+                        <Img onClick={() => {
+                            if (!edit && !todo.isDone) {
+                                setEdit(!edit)
+                            };
+                        }}>
+                            <AiFillEdit/>
+                        </Img>
+                        <Img onClick={() => handleDelete(todo.id)}>
+                            <AiFillDelete/>
+                        </Img>
+                        <Img onClick={() => handleDone(todo.id)}>
+                            <MdOutlineDone/>
+                        </Img>
+                    </Wrapper>
+                )
+            }
+        </Draggable>
     );
 };
