@@ -21,15 +21,17 @@ export const TodoList: React.FC<Props> = ({ todos, setTodos, completedTodos, set
                             {...provided.droppableProps}
                         >
                             <Title>Active Tasks</Title>
-                            {todos.map((todo, index) => (
-                                <SingleToDo 
-                                    index={index}
-                                    todo={todo} 
-                                    key={todo.id} 
-                                    todos={todos}
-                                    setTodos={setTodos}
-                                />
-                            ))}
+                            {todos.map((todo, index) => {
+                                return todo ? (
+                                    <SingleToDo 
+                                        index={index}
+                                        todo={todo} 
+                                        key={todo.id} 
+                                        todos={todos}
+                                        setTodos={setTodos}
+                                    />
+                                ) : null; }
+                            )}
                             {provided.placeholder}
                         </TodosWrapper>
                     )
@@ -43,7 +45,8 @@ export const TodoList: React.FC<Props> = ({ todos, setTodos, completedTodos, set
                             {...provided.droppableProps}
                         >
                             <Title>Complited Tasks</Title>
-                            {completedTodos.map((todo, index) => (
+                            {completedTodos.map((todo, index) => {
+                                return todo ? (
                                 <SingleToDo 
                                     index={index}
                                     todo={todo} 
@@ -51,7 +54,8 @@ export const TodoList: React.FC<Props> = ({ todos, setTodos, completedTodos, set
                                     todos={completedTodos}
                                     setTodos={setcompletedTodos}
                                 />
-                            ))}
+                                ) : null;
+                            })}
                         {provided.placeholder}
                         </RemoveWrapper>
                     )

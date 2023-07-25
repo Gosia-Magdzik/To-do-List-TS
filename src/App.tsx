@@ -35,7 +35,6 @@ const onDragEnd = (result:DropResult) => {
     destination.index === source.index ) {
       return;
     }
-    
 
   let add;
   let active = todos;
