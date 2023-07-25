@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Todo } from "../../model"
 import { Wrapper, SingleText, Img, SingleTextDone, Input } from "./styled";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
@@ -39,14 +39,18 @@ export const SingleToDo = ({todo, todos, setTodos }:Props) => {
         setEdit(false);
     }
 
-    const InputRef = useRef<HTMLInputElement>(null)
+    const inputRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, [edit]);
 
     return(
         <Wrapper onSubmit={(Event) => handleEdit(Event, todo.id)} >
                 {   
                     edit ? (
                         <Input 
-                            ref={InputRef}
+                            ref={inputRef}
                             value={editTodo}
                             onChange={(Event) => setEditTodo(Event.target.value)}
                         />
