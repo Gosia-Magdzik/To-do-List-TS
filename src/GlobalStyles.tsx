@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0 auto;
     background-color: #008080;
+    font-family: 'Neucha', cursive;
   }
 
   @import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
