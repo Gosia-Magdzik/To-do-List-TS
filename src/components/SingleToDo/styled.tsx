@@ -29,7 +29,7 @@ export const SingleText = styled.span`
     border: none;
     font-size: 20px;
     flex: 1; //gwarantuje elastyczność elementu
-    font-family: 'Neucha', cursive;
+    font-family: 'Arial';
 
     @media (max-width: 767px) {
         font-size: 15px;
@@ -42,7 +42,7 @@ export const SingleTextDone = styled.s`
     border: none;
     font-size: 20px;
     flex: 1; //gwarantuje elastyczność elementu
-    font-family: 'Neucha', cursive;
+    font-family: 'Arial';
 
     &:focus {
         outline: none;
